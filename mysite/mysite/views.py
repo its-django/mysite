@@ -22,3 +22,14 @@ def math(request, a, b):
     p = a * b
     q = a / b
     return render_to_response('math.html', {'s': s, 'd': d, 'p': p, 'q': q})
+
+
+def menu(request):
+    """retrun a menu response
+
+    :request: client request
+    :returns: http response
+
+    """
+    food = {'name': '番茄炒蛋', 'price': 60, 'comment': '好吃', 'is_spicy': False}
+    return render_to_response('menu.html', locals())
