@@ -1,5 +1,6 @@
 # encoding: utf-8
 
+from django import template
 from django.http import HttpResponse
 
 
@@ -20,5 +21,7 @@ def math(request, a, b):
     d = a - b
     p = a * b
     q = a / b
-    html = '<html>sum={s}<br>dif={d}<br>pro={p}<br>quo={q}</html>'.format(s=s, d=d, p=p, q=q)
-    return HttpResponse(html)
+    with open('templates/math.html', 'r') as reader:
+        t = template.Template(reader.read())
+    c = template.Context({'s': s, 'd': d, 'p': p, 'q': q})
+    return HttpResponse(t.render(c))
