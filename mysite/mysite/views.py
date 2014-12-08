@@ -1,7 +1,7 @@
 # encoding: utf-8
 
-from django import template
 from django.http import HttpResponse
+from django.shortcuts import render_to_response
 
 
 def here(request):
@@ -21,7 +21,4 @@ def math(request, a, b):
     d = a - b
     p = a * b
     q = a / b
-    with open('templates/math.html', 'r') as reader:
-        t = template.Template(reader.read())
-    c = template.Context({'s': s, 'd': d, 'p': p, 'q': q})
-    return HttpResponse(t.render(c))
+    return render_to_response('math.html', {'s': s, 'd': d, 'p': p, 'q': q})
