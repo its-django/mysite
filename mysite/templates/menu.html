@@ -11,7 +11,7 @@
             <li> 食物的名字是:{{ food.name }} </li>
             <li> 食物的價格是:{{ food.price }} </li>
             <li> 食物說明: {{ food.comment }} </li>
-            <li> 食物會辣？ {{ food.is_spicy }} </li>
+            <li> 食物會辣？ {% if food.is_spicy %} 辣 {% else %} 不辣 {% endif %} </li>
         </ul>
         {% empty %}
             <p>本餐廳啥都沒賣！</p>
