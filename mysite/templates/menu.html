@@ -13,6 +13,8 @@
             <li> 食物說明: {{ food.comment }} </li>
             <li> 食物會辣？ {{ food.is_spicy }} </li>
         </ul>
+        {% empty %}
+            <p>本餐廳啥都沒賣！</p>
         {% endfor %}
     </body>
 </html>
