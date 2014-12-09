@@ -5,6 +5,7 @@
         <meta charset='utf-8'>
     </head>
     <body>
+        <p>本餐廳共有{{ foods|length }}道菜</p>
         {% for food in foods %}
         <h3>第{{ forloop.counter }}道食物</h3>
         <ul>
