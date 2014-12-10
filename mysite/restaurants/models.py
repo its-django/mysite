@@ -9,6 +9,13 @@ class Restaurant(models.Model):
     phone_number = models.CharField(max_length=15)
     address = models.CharField(max_length=50, blank=True)
 
+    def __unicode__(self):
+        """
+        :returns: name string
+
+        """
+        return self.name
+
 
 class Food(models.Model):
     name = models.CharField(max_length=20)
@@ -16,3 +23,10 @@ class Food(models.Model):
     comment = models.CharField(max_length=50, blank=True)
     is_spicy = models.BooleanField(default=False)
     restaurant = models.ForeignKey(Restaurant)
+
+    def __unicode__(self):
+        """
+        :returns: name string
+
+        """
+        return self.name
