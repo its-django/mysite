@@ -30,3 +30,9 @@ class Food(models.Model):
 
         """
         return self.name
+
+    class Meta:
+
+        """Meta: attribute, options"""
+
+        ordering = ['price']
