@@ -1,7 +1,8 @@
 from django.conf.urls import patterns, include, url
 from django.contrib import admin
 
-from views import here, math, menu
+from views import here, math
+from restaurants.views import menu
 
 
 urlpatterns = patterns('',
