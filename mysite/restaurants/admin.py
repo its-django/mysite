@@ -8,6 +8,7 @@ class RestaurantAdmin(admin.ModelAdmin):
 
 class FoodAdmin(admin.ModelAdmin):
     list_display = ('name', 'restaurant', 'price')
+    list_filter = ('is_spicy',)
 
 
 admin.site.register(Restaurant, RestaurantAdmin)
