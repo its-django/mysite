@@ -15,3 +15,14 @@ def menu(request):
     """
     restaurants = Restaurant.objects.all()
     return render_to_response('menu.html', locals())
+
+
+def list_restaurants(request):
+    """retrun restaurant list
+
+    :request: client request
+    :returns: restaurant list webpage
+
+    """
+    restaurants = Restaurant.objects.all()
+    return render_to_response('restaurants_list.html', locals())
