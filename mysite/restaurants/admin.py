@@ -11,6 +11,7 @@ class FoodAdmin(admin.ModelAdmin):
     list_display = ('name', 'restaurant', 'price')
     list_filter = ('is_spicy',)
     ordering = ('-price',)
+    fields = ('price', 'restaurant')
 
 
 admin.site.register(Restaurant, RestaurantAdmin)
