@@ -22,3 +22,16 @@ def math(request, a, b):
     p = a * b
     q = a / b
     return render_to_response('math.html', {'s': s, 'd': d, 'p': p, 'q': q})
+
+
+def welcome(request):
+    """simple welcome page to demo query string
+
+    :request: user request
+    :returns: http response with username or origin welcome page
+
+    """
+    if 'user_name' in request.GET and request.GET['user_name'] != '':
+        return HttpResponse('Welcome!~'+request.GET['user_name'])
+    else:
+        return render_to_response('welcome.html', locals())
