@@ -3,8 +3,10 @@
 
 from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
+from django.template import RequestContext
+from django.utils import timezone
 
-from restaurants.models import Restaurant
+from restaurants.models import Restaurant, Comment
 
 
 def menu(request):
@@ -30,3 +32,29 @@ def list_restaurants(request):
     """
     restaurants = Restaurant.objects.all()
     return render_to_response('restaurants_list.html', locals())
+
+
+def comment(request, restaurant_id):
+    """list comment or add new comment
+
+    :request: client request
+    :restaurant_id: restaurant id
+    :returns: comment webpage if id is provided else return to restaurant list
+
+    """
+    if restaurant_id:
+        r = Restaurant.objects.get(id=restaurant_id)
+    else:
+        return HttpResponseRedirect("/restaurants_list/")
+    if request.POST:
+        visitor = request.POST['visitor']
+        content = request.POST['content']
+        email = request.POST['email']
+        date_time = timezone.localtime(timezone.now())
+        Comment.objects.create(
+            visitor=visitor, email=email,
+            content=content,
+            date_time=date_time,
+            restaurant=r
+        )
+    return render_to_response('comments.html', RequestContext(request, locals()))
