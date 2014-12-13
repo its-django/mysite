@@ -61,9 +61,9 @@
                 {% endif %}
 
                 <br /><br />
-                {% if error %}
-                <p style="color:red;">* 表單輸入不完整，請重新輸入</p>
-                {% endif %}
+                {% for e in errors %}
+                <p style="color:red;">{{e}}</p>
+                {% endfor %}
 
                 <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
                     <div class="form-group">
