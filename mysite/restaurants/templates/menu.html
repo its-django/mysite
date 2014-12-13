@@ -7,9 +7,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
         <style>
         th { text-align: center; }
-        div.menus {
+        div.center_padding {
             text-align: center;
-            padding: 40px 15px;
+            padding: 128px 15px;
         }
 
         </style>
@@ -38,33 +38,30 @@
         </nav>
 
         <div class="container">
-            <div class="menus">
-                <p>
-                {% for r in restaurants %}
-                <h2>{{ r.name }}</h2>
-                {% if r.food_set.all %}
-                <p>本餐廳共有{{ r.food_set.all|length }}道菜</p>
-                <table class="table">
+            <div class="center_padding">
+                <h2>{{ restaurant.name }}的Menu</h2>
+                {% if restaurant.food_set.all %}
+                <p>本餐廳共有{{ restaurant.food_set.all|length }}道菜</p>
+                <table class="table table-hover">
                     <tr>
                         <th>菜名</th>
                         <th>價格</th>
-                        <th>辣不辣</th>
                         <th>註解</th>
+                        <th>辣不辣</th>
                     </tr>
-                    {% for food in r.food_set.all %}
+                    {% for food in restaurant.food_set.all %}
                     <tr>
                         <td> {{ food.name }} </td>
                         <td> {{ food.price }} </td>
-                        <td> {% if food.is_spicy %} 辣 {% else %} 不辣 {% endif %} </td>
                         <td> {{ food.comment }} </td>
+                        <td> {% if food.is_spicy %} 辣 {% else %} 不辣 {% endif %} </td>
                     </tr>
                     {% endfor %}
                 </table>
-                </p>
                 {% else %}
                 <p>本餐廳啥都沒賣</p>
                 {% endif %}
-                {% endfor %}
+
             </div>
         </div>
 

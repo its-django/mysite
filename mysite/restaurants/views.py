@@ -13,7 +13,7 @@ def menu(request):
     :returns: http response
 
     """
-    restaurants = Restaurant.objects.all()
+    restaurant = Restaurant.objects.get(id=1)
     return render_to_response('menu.html', locals())
 
 
