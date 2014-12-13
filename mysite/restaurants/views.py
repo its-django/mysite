@@ -63,4 +63,5 @@ def comment(request, restaurant_id):
                 date_time=date_time,
                 restaurant=r
             )
+            visitor, content, email = ('', '', '')
     return render_to_response('comments.html', RequestContext(request, locals()))
