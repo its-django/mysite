@@ -40,20 +40,25 @@
         <div class="container">
             <div class="center_padding">
                 <h2>餐廳列表</h2>
+                <form action="/menu/" method="get">
                 <table class="table table-hover">
                     <tr>
+                        <th>選取</th>
                         <th>店名</th>
                         <th>電話</th>
                         <th>地址</th>
                     </tr>
                     {% for r in restaurants %}
                     <tr>
+                         <td> <input type="radio" name="id" value="{{r.id}}"> </td>
                         <td> {{ r.name }} </td>
                         <td> {{ r.phone_number }} </td>
                         <td> {{ r.address }} </td>
                     </tr>
                     {% endfor %}
                 </table>
+                <input type="submit" value="觀看menu" class="btn btn-default">
+                </form>
             </div>
         </div>
 

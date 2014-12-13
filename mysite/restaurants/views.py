@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 # encoding: utf-8
 
+from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 
 from restaurants.models import Restaurant
@@ -13,8 +14,11 @@ def menu(request):
     :returns: http response
 
     """
-    restaurant = Restaurant.objects.get(id=1)
-    return render_to_response('menu.html', locals())
+    if 'id' in request.GET and request.GET['id'] != '':
+        restaurant = Restaurant.objects.get(id=request.GET['id'])
+        return render_to_response('menu.html', locals())
+    else:
+        return HttpResponseRedirect("/restaurants_list/")
 
 
 def list_restaurants(request):
