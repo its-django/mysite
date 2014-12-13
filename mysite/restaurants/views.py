@@ -46,15 +46,18 @@ def comment(request, restaurant_id):
         r = Restaurant.objects.get(id=restaurant_id)
     else:
         return HttpResponseRedirect("/restaurants_list/")
+    error = False
     if request.POST:
         visitor = request.POST['visitor']
         content = request.POST['content']
         email = request.POST['email']
         date_time = timezone.localtime(timezone.now())
-        Comment.objects.create(
-            visitor=visitor, email=email,
-            content=content,
-            date_time=date_time,
-            restaurant=r
-        )
+        error = any(not request.POST[k] for k in request.POST)
+        if not error:
+            Comment.objects.create(
+                visitor=visitor, email=email,
+                content=content,
+                date_time=date_time,
+                restaurant=r
+            )
     return render_to_response('comments.html', RequestContext(request, locals()))
