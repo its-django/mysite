@@ -61,7 +61,7 @@ def comment(request, restaurant_id):
                 date_time=date_time,
                 restaurant=r
             )
-            f = CommentForm()
+            f = CommentForm(initial={'content': '我沒意見'})
     else:
-        f = CommentForm()
+        f = CommentForm(initial={'content': '我沒意見'})
     return render_to_response('comments.html', RequestContext(request, locals()))
