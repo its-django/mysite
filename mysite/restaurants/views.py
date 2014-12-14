@@ -49,21 +49,19 @@ def comment(request, restaurant_id):
         return HttpResponseRedirect("/restaurants_list/")
     errors = []
     if request.POST:
-        visitor = request.POST['visitor']
-        content = request.POST['content']
-        email = request.POST['email']
-        date_time = timezone.localtime(timezone.now())
-        if any(not request.POST[k] for k in request.POST):
-            errors.append('* 有空白欄位，請不要留空')
-        if '@' not in email:
-            errors.append('* email格式不正確，請重新輸入')
-        if not errors:
+        f = CommentForm(request.POST)
+        if f.is_valid():
+            visitor = request.POST['visitor']
+            content = request.POST['content']
+            email = request.POST['email']
+            date_time = timezone.localtime(timezone.now())
             Comment.objects.create(
                 visitor=visitor, email=email,
                 content=content,
                 date_time=date_time,
                 restaurant=r
             )
-            visitor, content, email = ('', '', '')
-    f = CommentForm()
+            f = CommentForm()
+    else:
+        f = CommentForm()
     return render_to_response('comments.html', RequestContext(request, locals()))

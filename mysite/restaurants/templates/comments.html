@@ -11,6 +11,9 @@
             text-align: center;
             padding: 128px 15px;
         }
+        .errorlist {
+            color: red;
+        }
 
         </style>
     </head>
@@ -61,9 +64,11 @@
                 {% endif %}
 
                 <br /><br />
-                {% for e in errors %}
-                <p style="color:red;">{{e}}</p>
-                {% endfor %}
+                {% if f.errors %}
+                <p style="color:red;">
+                    請依提示修復表單錯誤
+                </p>
+                {% endif %}
 
                 <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
                     <table>
