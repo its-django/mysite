@@ -7,6 +7,7 @@ from django.template import RequestContext
 from django.utils import timezone
 
 from restaurants.models import Restaurant, Comment
+from restaurants.forms import CommentForm
 
 
 def menu(request):
@@ -64,4 +65,5 @@ def comment(request, restaurant_id):
                 restaurant=r
             )
             visitor, content, email = ('', '', '')
+    f = CommentForm()
     return render_to_response('comments.html', RequestContext(request, locals()))

@@ -66,18 +66,9 @@
                 {% endfor %}
 
                 <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
-                    <div class="form-group">
-                    <label for="visitor">留言者:</label>
-                    <input id="visitor" type="text" name="visitor" value="{{visitor}}" class="form-control">
-                    </div>
-                    <div class="form-group">
-                    <label for="email">電子信箱:</label>
-                    <input id="email" type="text" name="email" value="{{email}}"class="form-control">
-                    </div>
-                    <div class="form-group">
-                    <label for="content">評價:</label>
-                    <textarea id="content" rows="10" cols="48" name="content" class="form-control">{{content}}</textarea>
-                    </div>
+                    <table>
+                    {{f.as_table}}
+                    </table>
                     <input type="submit" value="給予評價" class="btn btn-default">
                 </form>
             </div>
