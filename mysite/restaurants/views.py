@@ -32,6 +32,7 @@ def list_restaurants(request):
 
     """
     restaurants = Restaurant.objects.all()
+    request.session['restaurants'] = restaurants
     return render_to_response('restaurants_list.html', locals())
 
 
