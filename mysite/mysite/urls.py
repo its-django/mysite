@@ -2,7 +2,9 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from views import here, math, welcome, login, index, logout
+from django.contrib.auth.views import login, logout
+
+from views import here, math, welcome, index
 from restaurants.views import menu, list_restaurants, comment
 
 
