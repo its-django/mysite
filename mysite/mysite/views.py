@@ -1,6 +1,7 @@
 # encoding: utf-8
 
 from django.contrib import auth
+from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
@@ -80,3 +81,20 @@ def logout(request):
     """
     auth.logout(request)
     return HttpResponseRedirect('/index/')
+
+
+def register(request):
+    """new user register page
+
+    :request: client request
+    :returns: redirect to login page if success else register page
+
+    """
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            return HttpResponseRedirect('/accounts/login/')
+    else:
+        form = UserCreationForm()
+    return render_to_response('register.html', RequestContext(request, locals()))
