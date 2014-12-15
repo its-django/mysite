@@ -69,3 +69,14 @@ def index(request):
 
     """
     return render_to_response('index.html', RequestContext(request, locals()))
+
+
+def logout(request):
+    """logout view
+
+    :request: client request
+    :returns: index webpage
+
+    """
+    auth.logout(request)
+    return HttpResponseRedirect('/index/')

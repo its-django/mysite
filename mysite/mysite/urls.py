@@ -2,7 +2,7 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-from views import here, math, welcome, login, index
+from views import here, math, welcome, login, index, logout
 from restaurants.views import menu, list_restaurants, comment
 
 
@@ -13,6 +13,7 @@ urlpatterns = patterns('',
 
     url('^index/$', index),
     url(r'^accounts/login/$', login),
+    url(r'^accounts/logout/$', logout),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^here/$', here),
     url(r'^(\d{1,2})/math/(\d{1,2})/$', math),

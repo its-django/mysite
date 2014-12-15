@@ -41,7 +41,10 @@
             <div class="center_padding">
                 <h2>歡迎來到餐廳王</h2>
                 {% if request.user.is_authenticated %}
-                <p>{{request.user}} 您已經登入囉</p>
+                <p>
+                    {{request.user}} 您已經登入囉
+                    <a href="/accounts/logout/">登出</a>
+                </p>
                 <a href="/restaurants_list/">餐廳列表</a>
                 {% else %}
                 <p>您尚未登入喔~<a href="/accounts/login/">登入</a></p>
