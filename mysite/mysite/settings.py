@@ -88,3 +88,5 @@ TEMPLATE_DIRS = (
 )
 
 SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
+
+LOGIN_REDIRECT_URL = "/index/"
