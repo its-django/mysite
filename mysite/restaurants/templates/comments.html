@@ -11,6 +11,9 @@
             text-align: center;
             padding: 128px 15px;
         }
+        .errorlist {
+            color: red;
+        }
 
         </style>
     </head>
@@ -61,19 +64,27 @@
                 {% endif %}
 
                 <br /><br />
+                {% if f.errors %}
+                <p style="color:red;">
+                    請依提示修復表單錯誤
+                </p>
+                {% endif %}
 
                 <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
                     <div class="form-group">
                     <label for="visitor">留言者:</label>
-                    <input id="visitor" type="text" name="visitor" class="form-control">
+                    {{ f.visitor }}
+                    {{ f.visitor.errors }}
                     </div>
                     <div class="form-group">
-                    <label for="email">電子信箱:</label>
-                    <input id="email" type="text" name="email" class="form-control">
+                        <label for="email">電子信箱:</label>
+                    {{ f.email }}
+                    {{ f.email.errors }}
                     </div>
                     <div class="form-group">
                     <label for="content">評價:</label>
-                    <textarea id="content" rows="10" cols="48" name="content" class="form-control"></textarea>
+                    {{ f.content }}
+                    {{ f.content.errors }}
                     </div>
                     <input type="submit" value="給予評價" class="btn btn-default">
                 </form>
