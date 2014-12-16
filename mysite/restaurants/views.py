@@ -2,8 +2,7 @@
 # encoding: utf-8
 
 from django.http import HttpResponseRedirect
-from django.shortcuts import render_to_response
-from django.template import RequestContext
+from django.shortcuts import render_to_response, render
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required, user_passes_test
 
@@ -69,4 +68,4 @@ def comment(request, restaurant_id):
             f = CommentForm(initial={'content': '我沒意見'})
     else:
         f = CommentForm(initial={'content': '我沒意見'})
-    return render_to_response('comments.html', RequestContext(request, locals()))
+    return render(request, 'comments.html', locals())

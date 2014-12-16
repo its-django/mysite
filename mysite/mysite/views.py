@@ -3,7 +3,7 @@
 from django.contrib import auth
 from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import render_to_response
+from django.shortcuts import render_to_response, render
 from django.template import RequestContext
 
 
@@ -69,7 +69,7 @@ def index(request):
     :returns: index webpage
 
     """
-    return render_to_response('index.html', RequestContext(request, locals()))
+    return render(request, 'index.html', locals())
 
 
 def logout(request):
@@ -97,4 +97,4 @@ def register(request):
             return HttpResponseRedirect('/accounts/login/')
     else:
         form = UserCreationForm()
-    return render_to_response('register.html', RequestContext(request, locals()))
+    return render(request, 'register.html', locals())

@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title> Login </title>
+        <title> {% block title %} {% endblock %} </title>
         <meta charset='utf-8'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -27,33 +27,31 @@
                     </button>
                     <a class="navbar-brand" href="#">MySite</a>
                 </div>
-                <!--div id="navbar" class="collapse navbar-collapse">
+                <div id="navbar" class="collapse navbar-collapse">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Home</a></li>
-                        <li><a href="#about">About</a></li>
-                        <li><a href="#contact">Contact</a></li>
+                        {% if request.user.is_authenticated %}
+                            <li><a href="#">Hi! {{ request.user }}</a></li>
+                            <li><a href="/restaurants_list/">餐廳列表</a></li>
+                            <li><a href="/accounts/logout/">登出</a></li>
+                        {% else %}
+                            <li><a href="/accounts/login/">登入</a></li>
+                            <li><a href="/accounts/register/">註冊</a></li>
+                        {% endif %}
                     </ul>
-                </div--><!--/.nav-collapse -->
+                </div><!--/.nav-collapse -->
             </div>
         </nav>
 
         <div class="container">
             <div class="center_padding">
-                <form action="" method="post" class="form-default" style="width:50%;margin:auto">{% csrf_token %}
-                    <div class="form-group">
-                    <label for="username">用戶名稱:</label>
-                    <input type="text" name="username" value="{{username}}" id="username" class="form-control">
-                    </div>
-                    <div class="form-group">
-                    <label for="password">用戶密碼:</label>
-                    <input type="password" name="password" value="" id="password" class="form-control">
-                    </div>
-                    <input type="submit" value="登入" class="btn btn-default">
-                </form>
+                {% block content %} {% endblock %}
             </div>
         </div>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+    <script>
+        {% block javascript %} {% endblock %}
+    </script>
     </body>
 </html>
