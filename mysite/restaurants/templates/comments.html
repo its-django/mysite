@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title> Menu </title>
+        <title> Comment </title>
         <meta charset='utf-8'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -10,6 +10,9 @@
         div.center_padding {
             text-align: center;
             padding: 128px 15px;
+        }
+        .errorlist {
+            color: red;
         }
 
         </style>
@@ -39,29 +42,52 @@
 
         <div class="container">
             <div class="center_padding">
-                <h2>{{ restaurant.name }}的Menu</h2>
-                {% if restaurant.food_set.all %}
-                <p>本餐廳共有{{ restaurant.food_set.all|length }}道菜</p>
+                <h2>{{ r.name }}的評價</h2>
+                {% if r.comment_set.all %}
+                <p>目前共有{{ r.comment_set.all|length }}條評價</p>
                 <table class="table table-hover">
                     <tr>
-                        <th>菜名</th>
-                        <th>價格</th>
-                        <th>註解</th>
-                        <th>辣不辣</th>
+                        <th>留言者</th>
+                        <th>時間</th>
+                        <th>評價</th>
                     </tr>
-                    {% for food in restaurant.food_set.all %}
+                    {% for c in r.comment_set.all %}
                     <tr>
-                        <td> {{ food.name }} </td>
-                        <td> {{ food.price }} </td>
-                        <td> {{ food.comment }} </td>
-                        <td> {% if food.is_spicy %} 辣 {% else %} 不辣 {% endif %} </td>
+                        <td> {{ c.visitor }} </td>
+                        <td> {{ c.date_time | date:"F j, Y" }} </td>
+                        <td> {{ c.content }} </td>
                     </tr>
                     {% endfor %}
                 </table>
                 {% else %}
-                <p>本餐廳啥都沒賣</p>
+                <p>無評價</p>
                 {% endif %}
 
+                <br /><br />
+                {% if f.errors %}
+                <p style="color:red;">
+                    請依提示修復表單錯誤
+                </p>
+                {% endif %}
+
+                <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
+                    <div class="form-group">
+                    <label for="visitor">留言者:</label>
+                    {{ f.visitor }}
+                    {{ f.visitor.errors }}
+                    </div>
+                    <div class="form-group">
+                        <label for="email">電子信箱:</label>
+                    {{ f.email }}
+                    {{ f.email.errors }}
+                    </div>
+                    <div class="form-group">
+                    <label for="content">評價:</label>
+                    {{ f.content }}
+                    {{ f.content.errors }}
+                    </div>
+                    <input type="submit" value="給予評價" class="btn btn-default">
+                </form>
             </div>
         </div>
 

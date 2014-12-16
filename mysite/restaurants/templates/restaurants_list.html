@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title> Menu </title>
+        <title> Restaurants </title>
         <meta charset='utf-8'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -39,29 +39,28 @@
 
         <div class="container">
             <div class="center_padding">
-                <h2>{{ restaurant.name }}的Menu</h2>
-                {% if restaurant.food_set.all %}
-                <p>本餐廳共有{{ restaurant.food_set.all|length }}道菜</p>
+                <h2>餐廳列表</h2>
+                <form action="/menu/" method="get">
                 <table class="table table-hover">
                     <tr>
-                        <th>菜名</th>
-                        <th>價格</th>
-                        <th>註解</th>
-                        <th>辣不辣</th>
+                        <th>選取</th>
+                        <th>店名</th>
+                        <th>電話</th>
+                        <th>地址</th>
+                        <th>評價</th>
                     </tr>
-                    {% for food in restaurant.food_set.all %}
+                    {% for r in restaurants %}
                     <tr>
-                        <td> {{ food.name }} </td>
-                        <td> {{ food.price }} </td>
-                        <td> {{ food.comment }} </td>
-                        <td> {% if food.is_spicy %} 辣 {% else %} 不辣 {% endif %} </td>
+                         <td> <input type="radio" name="id" value="{{r.id}}"> </td>
+                        <td> {{ r.name }} </td>
+                        <td> {{ r.phone_number }} </td>
+                        <td> {{ r.address }} </td>
+                        <td> <a href="/comment/{{r.id}}/"> 評價 </a> </td> 
                     </tr>
                     {% endfor %}
                 </table>
-                {% else %}
-                <p>本餐廳啥都沒賣</p>
-                {% endif %}
-
+                <input type="submit" value="觀看menu" class="btn btn-default">
+                </form>
             </div>
         </div>
 
