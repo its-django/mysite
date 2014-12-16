@@ -5,9 +5,11 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response
 from django.template import RequestContext
 from django.utils import timezone
+from django.contrib.auth.decorators import login_required, user_passes_test
 
 from restaurants.models import Restaurant, Comment
 from restaurants.forms import CommentForm
+from restaurants.permissions import user_can_comment
 
 
 def menu(request):
@@ -24,6 +26,7 @@ def menu(request):
         return HttpResponseRedirect("/restaurants_list/")
 
 
+@login_required
 def list_restaurants(request):
     """retrun restaurant list
 
@@ -36,6 +39,7 @@ def list_restaurants(request):
     return render_to_response('restaurants_list.html', locals())
 
 
+@user_passes_test(user_can_comment, login_url='/accounts/login/')
 def comment(request, restaurant_id):
     """list comment or add new comment
 

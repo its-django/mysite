@@ -1,7 +1,7 @@
 <!doctype html>
 <html>
     <head>
-        <title> Login </title>
+        <title> Register </title>
         <meta charset='utf-8'>
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
@@ -39,12 +39,9 @@
 
         <div class="container">
             <div class="center_padding">
-                <form action="{% url 'django.contrib.auth.views.login' %}" method="post" class="form-default" style="width:50%;margin:auto">{% csrf_token %}
-                    <table>
-                        {{ form.as_table }}
-                    </table>
-                    <input type="hidden" name="next" value="{{ next }}">
-                    <input type="submit" value="登入" class="btn btn-default">
+                <form action="" method="post" class="form-default" style="text-align:left">{% csrf_token %}
+                    {{ form.as_p }}
+                    <input type="submit" value="註冊" class="btn btn-default">
                 </form>
             </div>
         </div>
