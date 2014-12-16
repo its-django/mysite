@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load myfilters %}
 
 {% block title %} Menu {% endblock %}
 
@@ -18,7 +19,7 @@
             <td> {{ food.name }} </td>
             <td> {{ food.price }} </td>
             <td> {{ food.comment }} </td>
-            <td> {% if food.is_spicy %} 辣 {% else %} 不辣 {% endif %} </td>
+            <td> {{ food.is_spicy|yes_no:"辣/不辣" }} </td>
         </tr>
         {% endfor %}
     </table>
