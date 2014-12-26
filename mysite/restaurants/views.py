@@ -7,24 +7,29 @@ from django.utils import timezone
 from django.contrib.auth.decorators import login_required, user_passes_test
 from django.views.generic.list import ListView
 from django.utils.decorators import method_decorator
+from django.views.generic.detail import DetailView
 
 from restaurants.models import Restaurant, Comment
 from restaurants.forms import CommentForm
 from restaurants.permissions import user_can_comment
 
 
-def menu(request):
-    """retrun a menu response
+class MenuView(DetailView):
 
-    :request: client request
-    :returns: http response
+    """show restaurant menu"""
 
-    """
-    if 'id' in request.GET and request.GET['id'] != '':
-        restaurant = Restaurant.objects.get(id=request.GET['id'])
-        return render_to_response('menu.html', locals())
-    else:
-        return HttpResponseRedirect("/restaurants_list/")
+    model = Restaurant
+    template_name = 'menu.html'
+    context_object_name = 'restaurant'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        """ return decorated dispatch
+
+        :request: request
+        :returns: return origin dispatch
+        """
+        return super(MenuView, self).dispatch(request, *args, **kwargs)
 
 
 class RestaurantsView(ListView):

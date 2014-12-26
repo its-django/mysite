@@ -24,7 +24,7 @@ urlpatterns = patterns('',
     url(r'^(\d{1,2})/math/(\d{1,2})/$', views.math),
     url(r'^welcome/$', views.welcome),
 
-    url(r'^menu/$', restaurants.views.menu),
+    url(r'^menu/(?P<pk>\d+)/$', restaurants.views.MenuView.as_view()),
     url(r'^restaurants_list/$', restaurants.views.RestaurantsView.as_view()),
     url(r'^comment/(\d{1,5})/$', restaurants.views.comment),
 )

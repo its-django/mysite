@@ -4,7 +4,6 @@
 
 {% block content %}
         <h2>餐廳列表</h2>
-        <form action="/menu/" method="get">
         <table class="table table-hover">
             <tr>
                 <th>選取</th>
@@ -15,7 +14,7 @@
             </tr>
             {% for r in restaurants %}
             <tr>
-                 <td> <input type="radio" name="id" value="{{r.id}}"> </td>
+                <td> <a href="/menu/{{r.id}}/"> 看菜單 </td>
                 <td> {{ r.name }} </td>
                 <td> {{ r.phone_number }} </td>
                 <td> {{ r.address }} </td>
@@ -23,6 +22,4 @@
             </tr>
             {% endfor %}
         </table>
-        <input type="submit" value="觀看menu" class="btn btn-default">
-        </form>
 {% endblock %}
