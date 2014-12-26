@@ -5,6 +5,8 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.generic.list import ListView
+from django.utils.decorators import method_decorator
 
 from restaurants.models import Restaurant, Comment
 from restaurants.forms import CommentForm
@@ -25,17 +27,22 @@ def menu(request):
         return HttpResponseRedirect("/restaurants_list/")
 
 
-@login_required
-def list_restaurants(request):
-    """retrun restaurant list
+class RestaurantsView(ListView):
 
-    :request: client request
-    :returns: restaurant list webpage
+    """return restaurant list"""
 
-    """
-    restaurants = Restaurant.objects.all()
-    request.session['restaurants'] = restaurants
-    return render_to_response('restaurants_list.html', locals())
+    model = Restaurant
+    template_name = 'restaurants_list.html'
+    context_object_name = 'restaurants'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        """ return decorated dispatch
+
+        :request: request
+        :returns: return origin dispatch
+        """
+        return super(RestaurantsView, self).dispatch(request, *args, **kwargs)
 
 
 @user_passes_test(user_can_comment, login_url='/accounts/login/')
