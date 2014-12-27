@@ -5,7 +5,7 @@ from django.contrib.auth.forms import UserCreationForm
 from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.template import RequestContext
-from django.views.generic.base import View
+from django.views.generic.base import View, TemplateView
 
 
 def math(request, a, b):
@@ -53,16 +53,6 @@ def login(request):
         return render_to_response('login.html', RequestContext(request, locals()))
 
 
-def index(request):
-    """index page
-
-    :request: client request
-    :returns: index webpage
-
-    """
-    return render(request, 'index.html', locals())
-
-
 def logout(request):
     """logout view
 
@@ -103,3 +93,10 @@ class HereView(View):
 
         """
         return HttpResponse('媽，我在這!')
+
+
+class IndexView(TemplateView):
+
+    """rewrite index view with class-based view"""
+
+    template_name = 'index.html'
