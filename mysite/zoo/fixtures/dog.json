@@ -1,0 +1,9 @@
+[
+{
+  "fields": {
+    "name": "Snoopy"
+  },
+  "model": "zoo.dog",
+  "pk": 1
+}
+]
