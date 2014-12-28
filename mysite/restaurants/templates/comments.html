@@ -25,7 +25,7 @@
         {% endif %}
 
         <br /><br />
-        {% if f.errors %}
+        {% if form.errors %}
         <p style="color:red;">
             請依提示修復表單錯誤
         </p>
@@ -34,18 +34,18 @@
         <form action="" method="post" class="form-horizontal" role="form" style="width:33%; margin:auto; text-align:left">{% csrf_token %}
             <div class="form-group">
             <label for="visitor">留言者:</label>
-            {{ f.visitor }}
-            {{ f.visitor.errors }}
+            {{ form.visitor }}
+            {{ form.visitor.errors }}
             </div>
             <div class="form-group">
                 <label for="email">電子信箱:</label>
-            {{ f.email }}
-            {{ f.email.errors }}
+            {{ form.email }}
+            {{ form.email.errors }}
             </div>
             <div class="form-group">
             <label for="content">評價:</label>
-            {{ f.content }}
-            {{ f.content.errors }}
+            {{ form.content }}
+            {{ form.content.errors }}
             </div>
             <input type="submit" value="給予評價" class="btn btn-default">
         </form>

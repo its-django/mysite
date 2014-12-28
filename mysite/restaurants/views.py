@@ -5,67 +5,95 @@ from django.http import HttpResponseRedirect
 from django.shortcuts import render_to_response, render
 from django.utils import timezone
 from django.contrib.auth.decorators import login_required, user_passes_test
+from django.views.generic.list import ListView
+from django.utils.decorators import method_decorator
+from django.views.generic.detail import DetailView, SingleObjectMixin
+from django.views.generic.edit import FormView
 
 from restaurants.models import Restaurant, Comment
 from restaurants.forms import CommentForm
 from restaurants.permissions import user_can_comment
 
 
-def menu(request):
-    """retrun a menu response
+class MenuView(DetailView):
 
-    :request: client request
-    :returns: http response
+    """show restaurant menu"""
 
-    """
-    if 'id' in request.GET and request.GET['id'] != '':
-        restaurant = Restaurant.objects.get(id=request.GET['id'])
-        return render_to_response('menu.html', locals())
-    else:
-        return HttpResponseRedirect("/restaurants_list/")
+    model = Restaurant
+    template_name = 'menu.html'
+    context_object_name = 'restaurant'
 
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        """ return decorated dispatch
 
-@login_required
-def list_restaurants(request):
-    """retrun restaurant list
-
-    :request: client request
-    :returns: restaurant list webpage
-
-    """
-    restaurants = Restaurant.objects.all()
-    request.session['restaurants'] = restaurants
-    return render_to_response('restaurants_list.html', locals())
+        :request: request
+        :returns: return origin dispatch
+        """
+        return super(MenuView, self).dispatch(request, *args, **kwargs)
 
 
-@user_passes_test(user_can_comment, login_url='/accounts/login/')
-def comment(request, restaurant_id):
-    """list comment or add new comment
+class RestaurantsView(ListView):
 
-    :request: client request
-    :restaurant_id: restaurant id
-    :returns: comment webpage if id is provided else return to restaurant list
+    """return restaurant list"""
 
-    """
-    if restaurant_id:
-        r = Restaurant.objects.get(id=restaurant_id)
-    else:
-        return HttpResponseRedirect("/restaurants_list/")
-    errors = []
-    if request.POST:
-        f = CommentForm(request.POST)
-        if f.is_valid():
-            visitor = request.POST['visitor']
-            content = request.POST['content']
-            email = request.POST['email']
-            date_time = timezone.localtime(timezone.now())
-            Comment.objects.create(
-                visitor=visitor, email=email,
-                content=content,
-                date_time=date_time,
-                restaurant=r
-            )
-            f = CommentForm(initial={'content': '我沒意見'})
-    else:
-        f = CommentForm(initial={'content': '我沒意見'})
-    return render(request, 'comments.html', locals())
+    model = Restaurant
+    template_name = 'restaurants_list.html'
+    context_object_name = 'restaurants'
+
+    @method_decorator(login_required)
+    def dispatch(self, request, *args, **kwargs):
+        """ return decorated dispatch
+
+        :request: request
+        :returns: return origin dispatch
+        """
+        return super(RestaurantsView, self).dispatch(request, *args, **kwargs)
+
+
+class CommentView(FormView, SingleObjectMixin):
+
+    """View associated with form"""
+
+    form_class = CommentForm
+    template_name = 'comments.html'
+    success_url = '/comment/'
+    initial = {'content': u'我沒意見'}
+    model = Restaurant
+    context_object_name = 'r'
+
+    def form_valid(self, form):
+        """form is validated, so use form data to create comment
+
+        :form: validated form
+        :returns: origin form_valid
+
+        """
+        Comment.objects.create(
+            visitor=form.cleaned_data['visitor'],
+            email=form.cleaned_data['email'],
+            content=form.cleaned_data['content'],
+            date_time=timezone.localtime(timezone.now()),
+            restaurant=self.get_object()
+        )
+        return self.render_to_response(self.get_context_data(
+                form=self.form_class(initial=self.initial))
+        )
+
+    def get_context_data(self, **kwargs):
+        """ assign attribute "object" that indicates the query object
+
+        :returns: origin context get from get_context_data with additional object parameter
+
+        """
+        self.object = self.get_object()
+        return super(CommentView, self).get_context_data(object=self.object, **kwargs)
+
+    @method_decorator(user_passes_test(user_can_comment, login_url='/accounts/login/'))
+    def dispatch(self, request, *args, **kwargs):
+        """ return decorated dispatch
+
+        :request: request
+        :returns: return origin dispatch
+        """
+        return super(CommentView, self).dispatch(request, *args, **kwargs)
