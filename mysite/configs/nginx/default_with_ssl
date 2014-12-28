@@ -1,0 +1,29 @@
+upstream django {
+    server unix:///var/run/mysite_uwsgi.sock;
+}
+
+server {
+
+    server_name yourdomain.com;
+
+    # 監聽 443，80 port可以關閉或並存
+    listen 443 ssl;
+    # 憑證檔位置
+    ssl_certificate /etc/nginx/self_signed_ssl/nginx.crt;
+    ssl_certificate_key /etc/nginx/self_signed_ssl/nginx.key;
+
+    # ssl相關設定
+    ssl_protocols  TLSv1 TLSv1.1 TLSv1.2;
+    ssl_ciphers RC4:HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers on;
+
+    location / {
+        uwsgi_pass django;
+        include /etc/nginx/uwsgi_params;
+    }
+
+    location ~ /static/ {
+        alias /path/to/your/static/;
+    }
+
+}

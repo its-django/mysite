@@ -1,0 +1,26 @@
+# 定義一個名為django的來源，用Nginx反向代理的特性，跟定義的server交換資料
+upstream django {
+# 定義一個假的server，記得我們設定uwsgi是從mysite_uwsgi.sock交換資料?
+# 而Nginx也從這個檔案交換資料，如此一來便把兩邊串接起來
+    server unix:///var/run/mysite_uwsgi.sock;
+}
+
+server {
+    # 監聽的 port
+    listen 80 default_server;
+
+    # 伺服器網域或ip
+    server_name yourdomain.com;
+
+    location / {
+        # 把匹配的請求傳至 django
+        uwsgi_pass django;
+        # 記得載入nginx uwsgi_params
+        include /etc/nginx/uwsgi_params;
+    }
+
+    # 匹配到static時讓nginx直接到static folder取靜態檔，無需透過uwsgi及django
+    location ~ /static/ {
+        alias /var/www/source/django/mysite/assets/;
+    }
+}
