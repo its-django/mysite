@@ -41,6 +41,7 @@ INSTALLED_APPS = (
     'django.contrib.staticfiles',
     'restaurants',
     'bank',
+    'zoo',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -97,4 +98,8 @@ LOGIN_REDIRECT_URL = "/index/"
 
 TEMPLATE_CONTEXT_PROCESSORS = global_settings.TEMPLATE_CONTEXT_PROCESSORS + (
     'django.core.context_processors.request',
+)
+
+FIXTURE_DIRS = (
+    os.path.join(BASE_DIR, 'fixtures'),
 )
