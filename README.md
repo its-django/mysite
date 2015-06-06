@@ -2,6 +2,8 @@ mysite
 ======
 這是書中的程式碼
 
+![cover image](https://github.com/myyang/mysite/blob/master/cover.jpg)
+
 ## git 分支架構
 
 * 每個章節為一個分支(branch)，以module\_XX為分支名稱
@@ -50,3 +52,6 @@ $ git checkout e0120b9
 此時便回到"Module\_19 - 簡易單元測試"時的開發狀況
 
 > 其他git指令請參考[git官網](http://git-scm.com/book/zh-tw/v1)
+
+## 如何取得書本
+請參考各出版社合作之[通路](http://books.gotop.com.tw/v_ACL043800)
