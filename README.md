@@ -1,5 +1,4 @@
 ## It's Django -- 用Python迅速打造Web應用 
----
 
 本書所有資訊皆可於本書的github wiki上取得:
 * [前往本書wiki](https://github.com/its-django/mysite/wiki)
