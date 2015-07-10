@@ -5,7 +5,21 @@ It's Django -- 用Python迅速打造Web應用
 本書所有資訊皆可於本書的github wiki上取得:
 * [前往本書wiki](https://github.com/its-django/mysite/wiki)
 
-## 如何取得本書
+### wiki目錄
+* [本書資訊](https://github.com/its-django/mysite/wiki/本書資訊)
+  * [如何取得本書](https://github.com/its-django/mysite/wiki/本書資訊#如何取得本書)
+* [範例碼](https://github.com/its-django/mysite/wiki/範例碼)
+  * [適用版本](https://github.com/its-django/mysite/wiki/範例碼#適用版本)
+  * [使用說明](https://github.com/its-django/mysite/wiki/範例碼#使用說明)
+    * [範例碼分支架構](https://github.com/its-django/mysite/wiki/範例碼#範例碼分支架構)
+    * [使用git下載與操作](https://github.com/its-django/mysite/wiki/範例碼#使用git下載與操作)
+    * [代碼打包下載](https://github.com/its-django/mysite/wiki/範例碼#代碼打包下載)
+* [社群與互動](https://github.com/its-django/mysite/wiki/社群與互動)
+* [勘誤](https://github.com/its-django/mysite/wiki/勘誤)
+  * [錯漏多字勘誤總表](https://github.com/its-django/mysite/wiki/勘誤/#錯字勘誤總表) 
+* [好評](https://github.com/its-django/mysite/wiki/好評)
+
+### 如何取得本書
 
 實體書的購買管道請參考各出版社合作之[通路](http://books.gotop.com.tw/v_ACL043800)
 
