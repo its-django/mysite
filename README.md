@@ -1,16 +1,18 @@
 It's Django -- 用Python迅速打造Web應用
 ======
 
-* [本書資訊](#本書資訊)
+<div>
+<span>
 * [範例碼](#範例碼)
   * [適用版本](#適用版本)
   * [使用說明](#使用說明)
 * [如何取得本書](#如何取得本書)
 * [好評](#好評)
-
-## 本書資訊
-
+</span>
+<span>
 <img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="200px"/>
+</span>
+</div>
 
 ## 範例碼
 
