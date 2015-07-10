@@ -1,8 +1,8 @@
-mysite
+It's Django -- 用Python迅速打造Web應用
 ======
-這是書中的程式碼
-
 <img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="200px"/>
+
+這是書中的程式碼
 
 ## git 分支架構
 
