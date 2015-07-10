@@ -5,7 +5,8 @@ It's Django -- 用Python迅速打造Web應用
 * [範例碼]()
   * [適用版本]()
   * [使用說明]()
-* [如何取得本書](#如何取得書本) 
+* [如何取得本書](#如何取得書本)
+* [好評]
 
 <img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="200px"/>
 
@@ -60,7 +61,7 @@ $ git checkout e0120b9
 
 > 其他git指令請參考[git官網](http://git-scm.com/book/zh-tw/v1)
 
-## 如何取得書本
+## 如何取得本書
 
 ###實體書
 請參考各出版社合作之[通路](http://books.gotop.com.tw/v_ACL043800)
