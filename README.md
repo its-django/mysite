@@ -1,18 +1,12 @@
-It's Django -- 用Python迅速打造Web應用
+It's Django -- 用Python迅速打造Web應用 
+<img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="150px"/>
 ======
 
-<div>
-<span>
 * [範例碼](#範例碼)
   * [適用版本](#適用版本)
   * [使用說明](#使用說明)
 * [如何取得本書](#如何取得本書)
 * [好評](#好評)
-</span>
-<span>
-<img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="200px"/>
-</span>
-</div>
 
 ## 範例碼
 
