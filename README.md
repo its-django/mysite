@@ -73,4 +73,6 @@ $ git checkout e0120b9
 
 #### 書評、部落格介紹
 
+[竹亭聽雨](http://q82465.pixnet.net/blog/post/64598949)
+
 #### 銷售成績
