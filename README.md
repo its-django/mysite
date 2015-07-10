@@ -14,9 +14,11 @@ It's Django -- 用Python迅速打造Web應用
 
 ## 範例碼
 
+這裡提供本書讀者關於範例碼的適用版本資訊以及使用方法。
+
 ### 適用版本
 
-Python 2.7
+[Python2.7](https://www.python.org/downloads/)
 Django 1.7
 
 ### 使用說明
