@@ -18,8 +18,10 @@ It's Django -- 用Python迅速打造Web應用
 
 ### 適用版本
 
-[Python2.7](https://www.python.org/downloads/)
-Django 1.7
+* [Python2.7](https://www.python.org/downloads/)
+* [Django1.7](https://www.djangoproject.com/download/1.7.9/tarball/)
+
+目前書中的範例碼跟說明並不完全適用於Django1.8以上的版本，我們會儘快就此新版本提供更新的說明和範例碼。若本書有機會再版，也會就版本部分進行更新。
 
 ### 使用說明
 
