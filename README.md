@@ -48,7 +48,7 @@ master-----------m1----m2----m3----m4--.....--m20
 
 如果讀者們有安裝git的話，可以利用下述方法來下載代碼:
 ```
-$ git clone git@github.com:myyang/mysite.git
+$ git clone git@github.com:its-django/mysite.git
 ```
 
 接著利用cd指令進入代碼目錄
