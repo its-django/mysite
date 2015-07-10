@@ -1,6 +1,6 @@
 It's Django -- 用Python迅速打造Web應用 
 ======
-<img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="150px"/>
+<img src="https://github.com/its-django/mysite/blob/master/cover.jpg" width="150px"/>
 
 * [範例碼](#範例碼)
   * [適用版本](#適用版本)
