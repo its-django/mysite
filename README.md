@@ -3,6 +3,7 @@ mysite
 這是書中的程式碼
 
 ![cover image](https://github.com/myyang/mysite/blob/master/cover.jpg)
+<img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="200px"/>
 
 ## git 分支架構
 
