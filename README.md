@@ -1,5 +1,12 @@
 It's Django -- 用Python迅速打造Web應用
 ======
+
+* [本書資訊]()
+* [範例碼]()
+  * [適用版本]()
+  * [使用說明]()
+* [如何取得本書](#如何取得書本) 
+
 <img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="200px"/>
 
 這是書中的程式碼
