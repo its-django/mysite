@@ -5,6 +5,7 @@ It's Django -- 用Python迅速打造Web應用
 * [範例碼](#範例碼)
   * [適用版本](#適用版本)
   * [使用說明](#使用說明)
+   * [範例碼分支架構](#範例碼分支架構)
 * [如何取得本書](#如何取得本書)
 * [好評](#好評)
 
@@ -21,9 +22,11 @@ It's Django -- 用Python迅速打造Web應用
 
 ### 使用說明
 
-#### git 分支架構
+由於本書的範例碼是藉由git管理、github保存，所以讀者如果熟悉git/github的話，可以參考本處所提供的操作說明。不熟悉git/github的朋友也不需要太擔心，我們會提供簡易式的網頁操作方式跟一次性的代碼下載給大家。
 
-* 每個章節為一個分支(branch)，以module\_XX為分支名稱
+#### 範例碼分支架構
+
+* 每個章節為一個分支(branch)，以module\_X為分支名稱
 * 基本上以每個小節為一個commit，若小節中有多處修改則多次commit
 * 當module完成後會merge回master更新, 但module的分支會繼續留著
 
@@ -36,25 +39,29 @@ master-----------m1----m2----m3----m4--.....--m20
                 `-- .....
 ```
 
-#### 如何使用
+#### 使用git下載與操作
 
-取得最新版本程式碼
+如果讀者們有安裝git的話，可以利用下述方法來下載代碼:
 ```
 $ git clone git@github.com:myyang/mysite.git
+```
+
+接著利用cd指令進入代碼目錄
+```
 $ cd mysite
 ```
 
-取得所有的branch
+接著我們需要取得每個章節分別的內容(各分支)，請在`mysite`資料夾底下輸入
 ```
 $ git fetch
 ```
 
-若要檢視某章節完成結果，可以切換branch
+然後我們就可以任意地切換到章節X(切到某分支)
 ```
-$ git checkout module_XX
+$ git checkout module_X
 ```
 
-查看commit簡易hash值及訊息
+如果我們要切換到某章節的某次更動狀態，請先查詢代碼(查看commit簡易hash值及訊息)
 ```
 $ git log --oneline
 4e829b3 Module_20 - 部署設定檔
@@ -63,10 +70,12 @@ $ git log --oneline
 8873d22 Module_19 - 簡易網站訪問測試
 e0120b9 Module_19 - 簡易單元測試
 ```
-假設現在要換到"Module\_19 - 簡易單元測試"，看這時的程式碼是什麼狀況，使用
+
+假設現在要切換到"Module\_19 - 簡易單元測試"，看這時的程式碼是什麼狀況，只要指定代碼
 ```
 $ git checkout e0120b9
 ```
+
 此時便回到"Module\_19 - 簡易單元測試"時的開發狀況
 
 > 其他git指令請參考[git官網](http://git-scm.com/book/zh-tw/v1)
