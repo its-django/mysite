@@ -2,7 +2,7 @@ mysite
 ======
 這是書中的程式碼
 
-![cover image](https://github.com/myyang/mysite/blob/master/cover.jpg)
+![cover image](https://github.com/myyang/mysite/blob/master/cover.jpg = 250x)
 
 ## git 分支架構
 
