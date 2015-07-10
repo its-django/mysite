@@ -8,11 +8,20 @@ It's Django -- 用Python迅速打造Web應用
 * [如何取得本書](#如何取得書本)
 * [好評](#好評)
 
+## 本書資訊
+
 <img src="https://github.com/myyang/mysite/blob/master/cover.jpg" width="200px"/>
 
-這是書中的程式碼
+## 範例碼
 
-## git 分支架構
+### 適用版本
+
+Python 2.7
+Django 1.7
+
+### 使用說明
+
+#### git 分支架構
 
 * 每個章節為一個分支(branch)，以module\_XX為分支名稱
 * 基本上以每個小節為一個commit，若小節中有多處修改則多次commit
@@ -27,7 +36,8 @@ master-----------m1----m2----m3----m4--.....--m20
                 `-- .....
 ```
 
-## 如何使用
+#### 如何使用
+
 取得最新版本程式碼
 ```
 $ git clone git@github.com:myyang/mysite.git
